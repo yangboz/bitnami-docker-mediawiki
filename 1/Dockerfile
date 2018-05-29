@@ -8,6 +8,11 @@ RUN bitnami-pkg unpack php-7.0.30-3 --checksum 6bd722cbf50b23d159394997370e1066f
 RUN bitnami-pkg unpack mysql-client-10.1.33-0 --checksum 1b1608f1c1f4e21f05037225e095c49035ad8bfdb8b580abbb904c9f2448a5c6
 RUN bitnami-pkg install libphp-7.0.30-3 --checksum 56a92497c5965c026a1faaa25bd7c47a65d629330d3f047f53a06a49d183c85f
 RUN bitnami-pkg unpack mediawiki-1.30.0-0 --checksum f1a1caea8933c9485a0e432266074ecc3b62dd21339e5ee93100a940c90f5d3e
+# Set the locale
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
 
 COPY rootfs /
 ENV ALLOW_EMPTY_PASSWORD="no" \
